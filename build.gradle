@@ -1,6 +1,8 @@
 plugins {
 	id 'fabric-loom' version '0.12-SNAPSHOT'
 	id 'maven-publish'
+	// https://github.com/BreadMoirai/github-release-gradle-plugin
+	id "com.github.breadmoirai.github-release" version "2.4.+"
 }
 
 sourceCompatibility = JavaVersion.VERSION_17
@@ -67,6 +69,18 @@ jar {
 	from("LICENSE") {
 		rename { "${it}_${project.archivesBaseName}"}
 	}
+}
+
+githubRelease {
+	token = project.findProperty("githubToken")
+	owner = "kikugie"
+	repo = "suppress-OpenGL-1282"
+	tagName = "v${project.mod_version}"
+	targetCommitish = "main"
+	releaseName = "Suppress OpenGL 1282 " + project.mod_version
+	body = rootProject.file("CHANGELOG.md").text
+	releaseAssets = [remapJar, sourcesJar]
+	dryRun = false
 }
 
 // configure the maven publication

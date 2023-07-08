@@ -13,21 +13,20 @@ import net.minecraft.client.gl.GlDebug;
 public abstract class GlDebugMixin {
   private static boolean hasPostedMessage = false;
 
-  private static Logger LOGGER = LoggerFactory.getLogger("Suppress OpenGL Error 1280");
+  private static final Logger LOGGER = LoggerFactory.getLogger("Suppress OpenGL Error 1282");
 
   @Inject(at = @At(value = "HEAD"), method = "info(IIIIIJJ)V", cancellable = true)
   private static void suppressMessage(int source, int type, int id, int severity, int messageLength, long message,
       long l,
       CallbackInfo ci) {
-    if (!(id == 1280)) {
+    if (!(id == 1282)) {
       return;
     }
     if (hasPostedMessage) {
       ci.cancel();
     } else {
-      LOGGER.info("OpenGL error 1280 (GL_INVALID_ENUM) is known to spam several times per second.");
-      LOGGER.info("This is the last time (for this run) that an error with this id will be logged.");
-      LOGGER.info("Go to https://github.com/AdamRaichu/suppress-opengl-1280/wiki for more info about this error.");
+      LOGGER.info("OpenGL error 1282 (GL error GL_INVALID_OPERATION) has been thrown.");
+      LOGGER.info("Suppressing following error logs.");
       hasPostedMessage = true;
     }
   }

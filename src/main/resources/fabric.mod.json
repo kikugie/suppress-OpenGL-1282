@@ -1,6 +1,6 @@
 {
   "schemaVersion": 1,
-  "id": "suppressopengl1280",
+  "id": "suppressopengl1282",
   "version": "$version",
   "name": "Suppress OpenGL Error 1280",
   "description": "Stop the spam of OpenGL error 1280 in the log.",
@@ -9,8 +9,8 @@
   ],
   "icon": "logo.png",
   "contact": {
-    "sources": "https://github.com/AdamRaichu/suppress-opengl-1280",
-    "issues": "https://github.com/AdamRaichu/suppress-opengl-1280/issues"
+    "sources": "https://github.com/kikugie/suppress-OpenGL-1282",
+    "issues": "https://github.com/kikugie/suppress-OpenGL-1282/issues"
   },
   "license": "GPL-3.0-or-later",
   "environment": "client",
